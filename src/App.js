@@ -16,9 +16,8 @@ const todos =  [
 //Componente App
 function App(props) {
   return (
-    <React.Fragment>
+    <>
         <TodoCounter />
-
         <TodoSearch />
 
         <TodoList >
@@ -28,7 +27,7 @@ function App(props) {
         </TodoList>
         
         <CreateTodoButton />
-    </React.Fragment>
+    </>
   );
 }
 
