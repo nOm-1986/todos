@@ -1,5 +1,7 @@
 .TodoCounter {
-    font-size: 24px;
-    color: blue;
+    font-family: 'Poppins';
+    font-size: 40px;
+    color:#fff;
     text-align: center;
+    margin: 50px;
 }

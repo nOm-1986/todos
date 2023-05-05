@@ -1,13 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+#root {
+    margin: 0;
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(280deg, #74ebd5, #ACB6E5);
-    color: #1E1E1F;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    /*background:linear-gradient( to bottom right,rgba(63,81,181,1) 0%, rgba(171,71,188 ,1) 70%);*/
+    /*background: linear-gradient(45deg, rgba(140, 0, 255, .6) 0%, rgba(2, 242, 114, .7) 100%);*/
+    background: linear-gradient(179.4deg, rgb(12, 20, 69) -16.9%, rgb(71, 30, 84) 119.9%);
+    box-shadow: 1px 1px 30px rgba(81,45,168 ,1);
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+body .color {
+    position: absolute;
+    filter: blur(150px);
+}
+
+body .color:nth-child(1){
+    top: 50px;
+    left: 100px;
+    width: 400px;
+    height: 400px;
+    background-color: #9c94e3;
+}
+
+body .color:nth-child(2){
+    top: 10px;
+    right: 100px;
+    width: 500px;
+    height: 500px;
+    background-color: #0f041d;
+}
+
+body .color:nth-child(3){
+    bottom: 10px;
+    right: 100px;
+    width: 600px;
+    height: 600px;
+    background-color: #9c94e3;
+}
+
+body .color:nth-child(4){
+    bottom: 0px;
+    right: 700px;
+    width: 500px;
+    height: 500px;
+    background-color: #43b5a0;
+}
+
+body .color:nth-child(5){
+    bottom: 10px;
+    left: 50px;
+    width: 500px;
+    height: 500px;
+    background-color: #3f2e64;
 }
   
-#root {
-    margin: 0 24px;
-    position: relative;
-    min-height: 100vh;
-}

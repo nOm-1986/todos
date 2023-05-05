@@ -11,18 +11,16 @@ function TodoItem(props) {
     };
     return (
         <li className="card">
-            <div className="card__content">
-                <span className={`Icon Icon-check ${props.completed && 'Icon-check--active'}`} onClick={onCompleted}>
-                    √
-                </span>
+            <span className={`Icon Icon-check ${props.completed && 'Icon-check--active'}`} onClick={onCompleted}>
+                √
+            </span>
 
-                <p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
-                    {props.text}
-                </p>
-                <span className="Icon Icon-delete" onClick={onDeleted}>
-                    x
-                </span>
-            </div>
+            <p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
+                {props.text}
+            </p>
+            <span className="Icon Icon-delete" onClick={onDeleted}>
+                x
+            </span>
         </li>
     );
 }
