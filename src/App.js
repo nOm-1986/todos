@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import {TodoCounter} from './TodoCounter';
 import { TodoSearch } from "./TodoSearch";
 import { TodoList } from "./TodoList";
@@ -14,13 +14,16 @@ const defaultToDos =  [
 ];
 
 //Componente App
-function App(props) {
+function App() {
+
+  const [searchValue, setSearchValue] = useState('');
+
   return (
     <React.Fragment>
         <TodoCounter />
         <section className="container">
           <div className="content-left">
-            <TodoSearch />
+            <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
           </div>
 
           <div className="content-right">
