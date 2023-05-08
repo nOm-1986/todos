@@ -8,11 +8,11 @@ import './App.css';
 
 const defaultToDos =  [
     {text: 'Curso de React JS ', completed: false},
-    {text: 'Estudiar React', completed: true},
+    {text: 'Estudiar React', completed: false},
     {text: 'Estudiar Ingles', completed: false},
-    {text: 'Iniciar Libro React - React Native', completed: true},
+    {text: 'Iniciar Libro React - React Native', completed: false},
     {text: 'Llorar con la llorona', completed: false},
-    {text: 'Resto de cosas por hacer', completed: true},
+    {text: 'Resto de cosas por hacer', completed: false},
     {text: 'Solo quiero ver que pasa cuando pongo un todo extremadamente largo, van por 3 lienas, se desborda =S', completed: true},
 
 ];
@@ -37,6 +37,22 @@ function App() {
     todo.text.toLowerCase().includes(searchValue.toLowerCase())
   );
 
+  //Función actualizadora del estado apartir de la función actualizadora del estado setTodos()
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => (todo.text === text))
+    newTodos[todoIndex].completed = true;
+    setTodos(newTodos);
+  };
+
+  const deleteTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos);
+  }
+
+
   return (
     <React.Fragment>
         <TodoCounter completados={completedTodos} total={totalTodos}/>
@@ -49,7 +65,14 @@ function App() {
           <div className="content-right">
             <TodoList >
                 {searchedTodos.map(todo => (
-                    <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
+                    <TodoItem 
+                      key={todo.text} 
+                      text={todo.text} 
+                      completed={todo.completed}
+                      //Forma de pasarle una función a un componente sin ejecutarla. 
+                      onComplete={() => completeTodo(todo.text)}
+                      onDelete={() => deleteTodo(todo.text)}
+                    />
                 ))}
             </TodoList>
           </div>
