@@ -27,6 +27,16 @@ function App() {
   const completedTodos = todos.filter( todo => !!todo.completed ).length;
   const totalTodos = todos.length;
 
+  // Cuidado con las llaves, si las utilizo dentro del callback de filter debo hacer el return
+  // por otro lado si utilizo filter(todo => (todo.text.include(searchValue))) hago el return de forma implicita
+  // const searchedTodos = todos.filter(todo => {
+  //   todo.text.includes(searchValue);
+  // });
+
+  const searchedTodos = todos.filter(todo => 
+    todo.text.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
   return (
     <React.Fragment>
         <TodoCounter completados={completedTodos} total={totalTodos}/>
@@ -38,7 +48,7 @@ function App() {
 
           <div className="content-right">
             <TodoList >
-                {defaultToDos.map(todo => (
+                {searchedTodos.map(todo => (
                     <TodoItem key={todo.text} text={todo.text} completed={todo.completed} />
                 ))}
             </TodoList>
