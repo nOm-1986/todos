@@ -33,6 +33,7 @@ function App() {
   //   todo.text.includes(searchValue);
   // });
 
+  //Includes de arrays - ES7
   const searchedTodos = todos.filter(todo => 
     todo.text.toLowerCase().includes(searchValue.toLowerCase())
   );

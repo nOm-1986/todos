@@ -1,10 +1,12 @@
 import React from "react";
+import { TodoIcon } from "./TodoIcon";
 
 const CompleteIcon = () => {
     return(
-        <>
-            CompleteIcon
-        </>
+        <TodoIcon
+            type="check"
+            color="green"
+        />
     )
 }
 
