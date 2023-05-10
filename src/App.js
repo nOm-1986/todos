@@ -7,9 +7,9 @@ import {CreateTodoButton} from "./CreateTodoButton";
 import './App.css';
 
 const defaultToDos =  [
-    {text: 'Curso de React JS ', completed: false},
+    {text: 'Curso de React JS ', completed: true},
     {text: 'Estudiar React', completed: false},
-    {text: 'Estudiar Ingles', completed: false},
+    {text: 'Estudiar Ingles', completed: true},
     {text: 'Iniciar Libro React - React Native', completed: false},
     {text: 'Llorar con la llorona', completed: false},
     {text: 'Resto de cosas por hacer', completed: false},

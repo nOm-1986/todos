@@ -8,7 +8,7 @@ function TodoItem(props) {
     
     return (
         <li className="card">
-            <CompleteIcon/>
+            <CompleteIcon completed={props.completed} onClick={props.onComplete}/>
             {/* <span className={`Icon Icon-check ${props.completed && 'Icon-check--active'}`} onClick={props.onComplete}>
                 <BsCheckCircle/>
             </span> */}
@@ -19,7 +19,7 @@ function TodoItem(props) {
             {/* <span className="Icon Icon-delete" onClick={props.onDelete}>
                 <BsFillXOctagonFill/>
             </span> */}
-            <DeleteIcon/>
+            <DeleteIcon onClick={props.onDelete}/>
         </li>
     );
 }
