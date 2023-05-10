@@ -16,7 +16,7 @@
 }
   
 .Icon-container-check--active {
-  color: #0ddd5d;
+  color: #57e075;
 }
 
 
@@ -26,7 +26,7 @@
 }
 
 .Icon-container-delete:hover .Icon-svg {
-  fill:  #e04257;
+  fill:  #e95814;
 } 
 
 .Icon-container-check:hover .Icon-svg {

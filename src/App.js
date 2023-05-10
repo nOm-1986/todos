@@ -70,7 +70,8 @@ function App() {
                       key={todo.text} 
                       text={todo.text} 
                       completed={todo.completed}
-                      //Forma de pasarle una función a un componente sin ejecutarla. 
+                      //Forma de pasarle una función a un componente sin ejecutarla dentro de una prop. 
+                      //Render prop.
                       onComplete={() => completeTodo(todo.text)}
                       onDelete={() => deleteTodo(todo.text)}
                     />
