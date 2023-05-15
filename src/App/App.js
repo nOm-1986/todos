@@ -1,9 +1,10 @@
 import React,{useState} from "react";
-import {TodoCounter} from './TodoCounter';
-import { TodoSearch } from "./TodoSearch";
-import { TodoList } from "./TodoList";
-import { TodoItem } from "./TodoItem";
-import {CreateTodoButton} from "./CreateTodoButton";
+import { useLocalStorate } from "./useLocalStorage";
+import {TodoCounter} from '../TodoCounter/TodoCounter';
+import { TodoSearch } from "../TodoSearch/TodoSearch";
+import { TodoList } from "../TodoList/TodoList";
+import { TodoItem } from "../TodoItem/TodoItem";
+import {CreateTodoButton} from "../CreateTodoButton/CreateTodoButton";
 import './App.css';
 
 // const defaultToDos =  [
@@ -17,30 +18,6 @@ import './App.css';
 // ];
 // localStorage.setItem('TODOS_V1',JSON.stringify(defaultToDos));
 // Recuerde que todo lo que se guarda en localStorage tiene si o si que ser un STRING.
-
-
-//Componente App
-function useLocalStorate(itemName, initialValue) {
-
-  const localStorageItem = localStorage.getItem(itemName);
-  let parsedItem;
-
-  if(!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-    parsedItem = initialValue;
-  } else {
-    parsedItem = JSON.parse(localStorageItem)
-  }
-  const [item, setItem] = useState(parsedItem);
-  
-  const saveItem = (newItem) => {
-    localStorage.setItem(itemName, JSON.stringify(newItem));
-    setItem(newItem);
-  };
-  //Los custome hooks deben retornar la estructura que nosotros queremos trabajar.
-  return [item, saveItem]
-}
-
 
 function App() {
   
