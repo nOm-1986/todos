@@ -20,22 +20,34 @@ import './App.css';
 
 
 //Componente App
-function App() {
+function useLocalStorate(itemName, initialValue) {
 
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
+  const localStorageItem = localStorage.getItem(itemName);
+  let parsedItem;
 
-  let parsedTodos;
-
-  if(!localStorageTodos) {
-    localStorageTodos.setItem('TODOS_V1', JSON.stringify([]));
-    parsedTodos = [];
+  if(!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
   } else {
-    parsedTodos = JSON.parse(localStorageTodos)
+    parsedItem = JSON.parse(localStorageItem)
   }
+  const [item, setItem] = useState(parsedItem);
   
-  parsedTodos = JSON.parse(localStorageTodos);
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+  //Los custome hooks deben retornar la estructura que nosotros queremos trabajar.
+  return [item, saveItem]
+}
 
-  const [todos, setTodos] = useState(parsedTodos);
+
+function App() {
+  
+  //parsedTodos = JSON.parse(localStorageTodos);
+
+  //Al usar nuestro custom hooks todos = item, saveTodos = saveItem
+  const [todos, saveTodos] = useLocalStorate('TODOS_V1', []);
   const [searchValue, setSearchValue] = useState('');
 
   //!! doble negación para saber que estamos trabajando con valores boleanos
@@ -52,11 +64,6 @@ function App() {
   const searchedTodos = todos.filter(todo => 
     todo.text.toLowerCase().includes(searchValue.toLowerCase())
   );
-
-  const saveTodos = (newTodos) => {
-    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
-    setTodos(newTodos);
-  };
 
   //Función actualizadora del estado apartir de la función actualizadora del estado setTodos()
   const completeTodo = (text) => {
