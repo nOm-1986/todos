@@ -1,22 +1,18 @@
 import React,{useState} from "react";
 import { useLocalStorate } from "./useLocalStorage";
-import {TodoCounter} from '../TodoCounter/TodoCounter';
-import { TodoSearch } from "../TodoSearch/TodoSearch";
-import { TodoList } from "../TodoList/TodoList";
-import { TodoItem } from "../TodoItem/TodoItem";
-import {CreateTodoButton} from "../CreateTodoButton/CreateTodoButton";
+import { AppUI } from "./AppUI";
 import './App.css';
 
-// const defaultToDos =  [
-//     {text: 'Curso de React JS ', completed: true},
-//     {text: 'Estudiar React', completed: false},
-//     {text: 'Estudiar Ingles', completed: true},
-//     {text: 'Iniciar Libro React - React Native', completed: false},
-//     {text: 'Llorar con la llorona', completed: false},
-//     {text: 'Resto de cosas por hacer', completed: false},
-//     {text: 'Solo quiero ver que pasa cuando pongo un todo extremadamente largo, van por 3 lienas, se desborda =S', completed: true},
-// ];
-// localStorage.setItem('TODOS_V1',JSON.stringify(defaultToDos));
+const defaultToDos =  [
+    {text: 'Curso de React JS ', completed: true},
+    {text: 'Estudiar React', completed: false},
+    {text: 'Estudiar Ingles', completed: true},
+    {text: 'Iniciar Libro React - React Native', completed: false},
+    {text: 'Llorar con la llorona', completed: false},
+    {text: 'Resto de cosas por hacer', completed: false},
+    {text: 'Solo quiero ver que pasa cuando pongo un todo extremadamente largo, van por 3 lienas, se desborda =S', completed: true},
+];
+localStorage.setItem('TODOS_V1',JSON.stringify(defaultToDos));
 // Recuerde que todo lo que se guarda en localStorage tiene si o si que ser un STRING.
 
 function App() {
@@ -56,37 +52,16 @@ function App() {
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   }
-
-
   return (
-    <React.Fragment>
-        <TodoCounter completados={completedTodos} total={totalTodos}/>
-
-        <section className="container">
-          <div className="content-left">
-            <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-          </div>
-
-          <div className="content-right">
-            <TodoList >
-                {searchedTodos.map(todo => (
-                    <TodoItem 
-                      key={todo.text} 
-                      text={todo.text} 
-                      completed={todo.completed}
-                      //Forma de pasarle una función a un componente sin ejecutarla dentro de una prop. 
-                      //Render prop.
-                      onComplete={() => completeTodo(todo.text)}
-                      onDelete={() => deleteTodo(todo.text)}
-                    />
-                ))}
-            </TodoList>
-          </div>
-
-        </section>
-
-        <CreateTodoButton />
-    </React.Fragment>
+    <AppUI 
+      completedTodo={completedTodos}
+      totalTodos={totalTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      searchedTodos={searchedTodos}
+      completeTodo={completeTodo}
+      deleteTodo={deleteTodo}
+    />
   );
 }
 
